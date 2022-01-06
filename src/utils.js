@@ -36,9 +36,9 @@ export const signup = (data) => {
 
 
 export const getMenus = (restId) => {
-	return fetch(`/restaurant/${restId}/menu`).then((response) => {
+	return fetch(`/restaurants/${restId}/menu`).then((response) => {
 		if (response.status < 200 || response.status >= 300) {
-			throw Error("Fail to get menus");
+			throw Error("Fail to get menus: " + response.status);
 		}
 		return response.json();
 	});
