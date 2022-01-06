@@ -9,6 +9,7 @@ export const login = (credential) => {
 		credentials: "include",
 	}).then((response) => {
 		if (response.status < 200 || response.status >= 300) {
+			console.log(response.status)
 			throw Error("Fail to log in");
 		}
 	});
@@ -39,7 +40,6 @@ export const getMenus = (restId) => {
 		if (response.status < 200 || response.status >= 300) {
 			throw Error("Fail to get menus");
 		}
-
 		return response.json();
 	});
 };

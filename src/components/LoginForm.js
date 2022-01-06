@@ -55,8 +55,8 @@ class LoginForm extends React.Component {
 					</Button>
 				</Form.Item>
 			</Form>
-		);
-	};
+		)
+	}
 }
 
 
