@@ -1,7 +1,8 @@
 import { Button, Card, List, message, Select, Tooltip } from "antd"
 import { useEffect, useState } from "react"
 import { addItemToCart, getMenus, getRestaurants } from "../utils"
-import { PlusOutlined } from "@ant-design/icons"
+import { PlusOutlined, EditOutlined } from "@ant-design/icons"
+import Meta from "antd/lib/card/Meta";
 
 
 const { Option } = Select;
@@ -23,7 +24,7 @@ const AddToCartButton = ({ itemId }) => {
 		<Tooltip title="Add to shopping cart">
 			<Button
 				loading={loading}
-				type="primary"
+				type="text"
 				icon={<PlusOutlined />}
 				onClick={AddToCart}
 			/>
@@ -90,24 +91,34 @@ const FoodList = () => {
 						gutter: 16,
 						xs: 1,
 						sm: 2,
-						md: 4,
-						lg: 4,
-						xl: 3,
-						xxl: 3,
+						md: 3,
+						lg: 3,
+						xl: 4,
+						xxl: 5,
 					}}
 					dataSource={foodData}
 					renderItem={(item) => (
 						<List.Item>
 							<Card
-								title={item.name}
-								extra={<AddToCartButton itemId={item.id} />}
+								style={{
+									width: 300,
+								}}
+								cover={
+									<img 
+										src={item.imageUrl}
+										alt={item.name}
+									/>
+								}
+								actions={[
+									<AddToCartButton itemId={item.id} />,
+									<EditOutlined key="edit" />,
+								]}
 							>
-								<img
-									src={item.imageUrl}
-									alt={item.name}
-									style={{ height: 340, width: "100%", display: "block" }}
+								<Meta 
+									title={item.name}
+									description={item.discription}
 								/>
-								{`Price: ${item.price}`}
+									
 							</Card>
 						</List.Item>
 					)}
